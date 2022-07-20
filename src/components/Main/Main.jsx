@@ -1,20 +1,33 @@
-import { Card } from "./Card.jsx";
+import { Card } from "../Card/Card.jsx";
+import { Input } from "../Input/Input.jsx";
+import { data } from "../../data";
+
 //нужно перебрать keywords и убрать повторяющиеся элементы(использовать set и преобразовать в строку и обратно)
 
-export function Main({ data }) {
+function getUniqKeywords(data) {
+  return data.map((elem) => {
+    return {
+      ...elem,
+      keywords: [...new Set(elem.keywords.split(" "))].join(" "),
+    };
+  });
+}
+const uniqKey = getUniqKeywords(data);
+
+export function Main() {
   return (
     <main className="main">
       <div className="main__container">
-        <div className="main__search">
-          <input
-            id="main__input"
-            className="main__input"
-            placeholder="emoji search"
-            type="text"
-          />
-        </div>
+        <Input />
         <div className="main__content">
-          <Card />
+          {uniqKey.map((elem, index) => (
+            <Card
+              key={index}
+              title={elem.symbol}
+              symbol={elem.title}
+              keywords={elem.keywords}
+            />
+          ))}
         </div>
       </div>
     </main>
