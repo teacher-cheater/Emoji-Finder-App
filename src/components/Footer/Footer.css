@@ -1,0 +1,16 @@
+/*-----------footer-----------*/
+.footer {
+  background: #edeef3;
+}
+
+.footer__content {
+  border-top: 1px solid #ced4da;
+  padding: 20px 0;
+}
+
+.footer__text {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.31;
+  color: #6c757d;
+}

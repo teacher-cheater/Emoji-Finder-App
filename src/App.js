@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+//{data.map((elem, index) => (
+//<div className="main__cart">
+//  <>
+//    <div key={index} className="main__picture">
+//      {elem.title}
+//    </div>
+//    <p key={index} className="main__title">
+//      {elem.symbol}
+//    </p>
+//    <p key={index} className="main__text">
+//      {elem.keywords}
+//    </p>
+//  </>
+//  //</div>
+//))}
+
+import { Header } from "./components/Header/Header.jsx";
+import { Footer } from "./components/Footer/Footer.jsx";
+import { Main } from "./components/Main/Main.jsx";
+import { data } from "./data";
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <Header />
+      <Main />
+      <Footer />
     </div>
   );
 }

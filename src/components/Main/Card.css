@@ -1,0 +1,32 @@
+/*----------class-card---------*/
+.main__cart {
+  width: 316px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.main__picture {
+  margin: auto;
+  font-size: 48px;
+  margin-bottom: 18px;
+}
+
+.main__title {
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.65;
+  text-decoration-line: underline;
+  color: #000000;
+  margin-bottom: 18px;
+}
+
+.main__text {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #3f444a;
+}

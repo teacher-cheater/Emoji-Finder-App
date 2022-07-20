@@ -1,0 +1,26 @@
+
+
+
+.header {
+  background: linear-gradient(92.33deg, #087990 0.12%, #055160 100%);
+  border: 1px solid #CED4DA;
+}
+
+.header__content {
+  padding: 68px 0;
+}
+.header__title {
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 1.2;
+  color: #CFF4FC;
+  text-align: center;
+  margin-bottom: 4px;
+}
+.header__subtitle {
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 1.7;
+  color: #CFF4FC;
+  text-align: center;
+}
