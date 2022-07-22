@@ -1,9 +1,6 @@
-
-
-
 .header {
   background: linear-gradient(92.33deg, #087990 0.12%, #055160 100%);
-  border: 1px solid #CED4DA;
+  border: 1px solid #ced4da;
 }
 
 .header__content {
@@ -13,14 +10,25 @@
   font-weight: 700;
   font-size: 72px;
   line-height: 1.2;
-  color: #CFF4FC;
+  color: #cff4fc;
   text-align: center;
   margin-bottom: 4px;
 }
+@media (max-width: 544px) {
+  .header__title {
+    font-size: 44px;
+  }
+}
+
 .header__subtitle {
   font-weight: 400;
   font-size: 21px;
   line-height: 1.7;
-  color: #CFF4FC;
+  color: #cff4fc;
   text-align: center;
+}
+@media (max-width: 544px) {
+  .header__subtitle {
+    font-size: 18px;
+  }
 }
