@@ -1,9 +1,7 @@
 .main__search {
-  /*padding: 0 20px;*/
 }
 .main__input {
   width: 100%;
-  color: #abb5be;
   display: inline-block;
   border: 2px solid #ced4da;
   background-color: #fff;

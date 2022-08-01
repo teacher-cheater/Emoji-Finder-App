@@ -1,41 +1,48 @@
 import { Card } from "../Card/Card.jsx";
 import { Input } from "../Input/Input.jsx";
-import { data } from "../../data";
-import { useState } from "react";
-import Fuse from "fuse.js";
+//import { data } from "../../data";
+import { useState, useEffect } from "react";
+//import Fuse from "fuse.js";
 
-function getUniqKeywords(dataKey) {
-  return dataKey.map((elem) => {
-    return {
-      ...elem,
-      keywords: [...new Set(elem.keywords.split(" "))].join(" "),
-    };
-  });
-}
-const uniqKey = getUniqKeywords(data);
+//function getUniqKeywords(dataKey) {
+//  return dataKey.map((elem) => {
+//    return {
+//      ...elem,
+//      keywords: [...new Set(elem.keywords.split(" "))].join(" "),
+//    };
+//  });
+//}
 
-export function Main() {
+//const getUniqKeyData = getUniqKeywords(data);
+
+export function Main({ data }) {
   const [input, setInput] = useState("");
-  //const inputValue = input.split(" ").filter((elem) => elem.trim());
+  const [textInput, setTextInput] = useState([]);
 
-  const fuse = new Fuse(uniqKey, {
-    keys: ["title", "keywords"],
-  });
+  const filterData = textInput.length > 0 ? textInput : data;
 
-  const results = fuse.search(input);
-  const titleResults = input ? results.map((elem) => elem.item) : uniqKey;
+  useEffect(() => {
+    let ignore = false;
 
-  //function setInputs({ currentTarget = {} }) {
-  //  const { value } = currentTarget;
-  //  setInput(value);
-  //}
+    const searchData = fetch(
+      `https://emoji.ymatuhin.workers.dev/?search=${input}`
+    )
+      .then((response) => response.json())
+      .then((commits) => setTextInput(commits));
+    if (!ignore) {
+      setTextInput(searchData);
+    }
+    return () => {
+      ignore = true;
+    };
+  }, [input]);
 
   return (
     <main className="main">
       <div className="main__container">
         <Input setInput={setInput} input={input} />
         <div className="main__content">
-          {titleResults.map((elem, index) => (
+          {filterData.map((elem, index) => (
             <Card
               key={index}
               title={elem.symbol}
