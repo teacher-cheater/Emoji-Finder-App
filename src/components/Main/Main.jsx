@@ -1,40 +1,22 @@
 import { Card } from "../Card/Card.jsx";
 import { Input } from "../Input/Input.jsx";
-//import { data } from "../../data";
 import { useState, useEffect } from "react";
-//import Fuse from "fuse.js";
 
-//function getUniqKeywords(dataKey) {
-//  return dataKey.map((elem) => {
-//    return {
-//      ...elem,
-//      keywords: [...new Set(elem.keywords.split(" "))].join(" "),
-//    };
-//  });
-//}
-
-//const getUniqKeyData = getUniqKeywords(data);
-
-export function Main({ data }) {
+export function Main() {
   const [input, setInput] = useState("");
   const [textInput, setTextInput] = useState([]);
 
-  const filterData = textInput.length > 0 ? textInput : data;
-
   useEffect(() => {
-    let ignore = false;
-
-    const searchData = fetch(
-      `https://emoji.ymatuhin.workers.dev/?search=${input}`
-    )
+    const controller = new AbortController();
+    fetch(`https://emoji.ymatuhin.workers.dev?search=${input}`, {
+      signal: controller.signal,
+    })
       .then((response) => response.json())
-      .then((commits) => setTextInput(commits));
-    if (!ignore) {
-      setTextInput(searchData);
-    }
-    return () => {
-      ignore = true;
-    };
+      .then((commits) => setTextInput(commits.filter((elem) => elem)));
+
+    //const filterData = () => commits.filter((elem) => elem);
+
+    return () => controller.abort();
   }, [input]);
 
   return (
@@ -42,7 +24,7 @@ export function Main({ data }) {
       <div className="main__container">
         <Input setInput={setInput} input={input} />
         <div className="main__content">
-          {filterData.map((elem, index) => (
+          {textInput.map((elem, index) => (
             <Card
               key={index}
               title={elem.symbol}

@@ -1,20 +1,19 @@
 import { Header } from "./components/Header/Header.jsx";
 import { Footer } from "./components/Footer/Footer.jsx";
 import { Main } from "./components/Main/Main.jsx";
-import { useState } from "react";
 
 
-const searchData = fetch('https://emoji.ymatuhin.workers.dev/?')
-  .then(response => response.json())
+//const searchData = fetch('https://emoji.ymatuhin.workers.dev/?')
+//  .then(response => response.json())
 function App() {
 
-  const [dataEmoji, setDataEmoji] = useState([]);
-  searchData.then(elem => setDataEmoji(elem));
+  //const [dataEmoji, setDataEmoji] = useState([]);
+  //searchData.then(elem => setDataEmoji(elem));
 
   return (
     <div className="wrapper">
       <Header />
-      <Main data={dataEmoji} />
+      <Main />
       <Footer />
     </div>
   );
